@@ -22,8 +22,9 @@ namespace VRC_Mod_Tool
             {
                 // Now you can use the loaded configuration in your application
                 //Console.WriteLine($"EnableBeep is set to: {config.EnableBeep}");
-                //Console.WriteLine($"volume level is set to: {config.volume}");
+                //Console.WriteLine($"Volume level is set to: {config.Volume}");
                 //Console.WriteLine($"RoleIdToPing is set to: {config.RoleIdToPing}");
+                //Console.WriteLine($"DiscordWebhookUrl is set to: {config.DiscordWebhookUrl}");
             }
             else
             {
@@ -136,6 +137,7 @@ namespace VRC_Mod_Tool
                     if (VRCProcs != null && VRCProcs.Length > 0)
                     {
                         Logger.Log($"Watching VRChat Process [{target.Name}]");
+                        Logger.ListLog("Getting API Data");
                         Process VRChat = VRCProcs[0];
 
                         ReadNewLines(target.FullName);
@@ -238,10 +240,10 @@ namespace VRC_Mod_Tool
                     if (parts.Length > 1)
                     {
                         udonexception = parts[1]; // Corrected assignment
-                        Logger.LogImportant("[udon exception]: " + udonexception);
+                        Logger.LogImportant("[UdonVMException]: " + udonexception);
 
                         // Continue with the rest of the code
-                        Task.Run(() => oldSendDiscordWebhook($"[udon exception]: {udonexception}", config)).Wait();
+                        Task.Run(() => oldSendDiscordWebhook($"[UdonVMException]: {udonexception}", config)).Wait();
                     }
                     else
                     {
@@ -304,7 +306,7 @@ namespace VRC_Mod_Tool
                     if (parts.Length > 1)
                     {
                         votename = parts[1].Trim(); // Trim any leading or trailing whitespaces
-                        Logger.LogImportant($"[ModerationManager] {votename}");
+                        Logger.CrasherLog($"[ModerationManager] {votename}");
 
                         // Send Discord webhook for vote
                         Task.Run(() => SendDiscordWebhook("ModerationManager", $"{votename}", config, "16711680")).Wait();
