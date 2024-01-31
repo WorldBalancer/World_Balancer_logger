@@ -13,7 +13,7 @@ namespace VRC_Mod_Tool
 
         public static async Task Main(string[] args)
         {
-            Console.Title = "World_Balancer_logger";
+            Console.Title = "Moderation_System_logger";
 
             AppConfig config = ConfigManager.LoadConfig("./config.json");
 
