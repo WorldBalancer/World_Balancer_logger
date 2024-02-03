@@ -5,6 +5,8 @@ This is a simple tool thats blocking Azuki's FBT moderation lists, without the l
 
 Requirements: NET 7.0 https://dotnet.microsoft.com/en-us/download/dotnet/7.0
 
+Please take a look at our Wiki https://github.com/WorldBalancer/World_Balancer_logger/wiki
+
 Images look like in the Console
 ![image](https://github.com/RatingGull27/World_Balancer_logger/assets/45981158/0054135f-488f-4ac1-9739-f86bec781277)
 
