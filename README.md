@@ -19,4 +19,6 @@ World_Balancer_logger.dll link: https://www.virustotal.com/gui/file/4638b12e7fa4
 Images look like in the Console
 ![image](https://github.com/RatingGull27/World_Balancer_logger/assets/45981158/0054135f-488f-4ac1-9739-f86bec781277)
 
+Our Discord support invite: https://discord.com/invite/mm3FT687N2
+
 Share the link to the code on GitHub: https://github.com/Umbra999/VRC-AntiFBTHeaven
