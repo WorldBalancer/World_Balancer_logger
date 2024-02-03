@@ -1,7 +1,11 @@
 # World_Balancer_logger with Moderation System
+
+```
 Prevents Moderation System and allows you to use the Admin tools [NO EAC BYPASS NEEDED] This tool is ALLOWED by VRChat and you won't get banned for it
 
 This is a simple tool thats blocking Azuki's FBT moderation lists, without the lists the Moderation system loses its power and you can do the following
+```
+Please note that the message, ^ This message was not from us but was from the Umbra 999.
 
 Requirements: NET 7.0 https://dotnet.microsoft.com/en-us/download/dotnet/7.0
 
