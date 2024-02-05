@@ -173,8 +173,6 @@ namespace VRC_Mod_Tool
 
             string udonvideoplayback = "";
 
-            string kicked = "";
-
             foreach (var line in lines)
             {
                 if (line.Contains("User Authenticated: "))
@@ -207,17 +205,16 @@ namespace VRC_Mod_Tool
                     continue;
                 }
 
-                if (line.Contains("[Behaviour] Received executive message: You have been kicked from the instance: "))
+                if (line.Contains("[Behaviour] Received executive message: You have been kicked from the instance"))
                 {
                     //Logger.Log($"Processing line: {line}"); // Add this line for debug
-                    string[] parts = line.Split(new[] { "[Behaviour] Received executive message: You have been kicked from the instance: " }, StringSplitOptions.None);
+                    string[] parts = line.Split(new[] { "[Behaviour] Received executive message: You have been kicked from the instance" }, StringSplitOptions.None);
 
                     if (parts.Length > 1)
                     {
-                        kicked = parts[1].Trim(); // Trim any leading or trailing whitespaces
-                        Logger.LogImportantVRChat($"{kicked}");
+                        Logger.LogImportantVRChat($"[Kicked] You have been kicked from the instance");
 
-                        Task.Run(() => oldSendDiscordWebhook($"[kicked] {kicked}", config)).Wait();
+                        Task.Run(() => oldSendDiscordWebhook($"[kicked] You have been kicked from the instance", config)).Wait();
                     }
                     else
                     {
@@ -337,7 +334,8 @@ namespace VRC_Mod_Tool
                     {
                         Logger.botLog($"Bot User {apiDisplayName} connected");
                     }
-
+                    // Send Discord webhook for users user
+                    Task.Run(() => SendDiscordWebhook("User Connection", $"User {apiDisplayName} connected", config, "65280")).Wait();
                 }
 
                 if (line.Contains("[Behaviour] OnPlayerLeft "))
@@ -360,8 +358,6 @@ namespace VRC_Mod_Tool
         {
             try
             {
-                // Send Discord webhook for users user
-                await SendDiscordWebhook("User Connection", $"User {apiDisplayName} connected", config, "65280"); // Green
 
                 if (APIClient.BannedUsers.Contains(apiDisplayName))
                 {
