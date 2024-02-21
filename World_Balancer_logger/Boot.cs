@@ -83,7 +83,7 @@ namespace VRC_Mod_Tool
 
         static string SanitizeUsername(string username)
         {
-            string pattern = "(([A-Z0-9_~!.%]+)";   
+            string pattern = @"^[^\p{C}]+$"; 
 
             string normalizedUsername = NormalizeUsername(username, System.Text.NormalizationForm.FormKC);
 
