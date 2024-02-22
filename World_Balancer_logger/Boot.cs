@@ -81,41 +81,33 @@ namespace VRC_Mod_Tool
             }
         }
 
-        static string SanitizeUsername(string username)
+        private static string SanitizeUsername(string username)
         {
-            string pattern = @"^[^\p{C}]+$"; 
+            Console.OutputEncoding = Encoding.UTF8;
 
-            string normalizedUsername = NormalizeUsername(username, System.Text.NormalizationForm.FormKC);
+            string pattern = @"^[^\p{C}]+$";
+            bool isValid = System.Text.RegularExpressions.Regex.IsMatch(username, pattern);
+            //Logger.LogDebug($"{isValid}");
 
-            // Log Unicode code points of each character
-            foreach (var codePoint in normalizedUsername.Select((char c, int index) => char.ConvertToUtf32(c.ToString(), 0)))
+            // Display validation result
+            if (isValid)
             {
-                //Logger.LogDebug($"Code Point: U+{codePoint:X4}");
-            }
-
-            // Identify characters that do not match the pattern
-            string invalidCharacters = new string(normalizedUsername.Where(c => !Regex.IsMatch(c.ToString(), pattern)).ToArray());
-
-            if (Regex.IsMatch(normalizedUsername, pattern))
-            {
-                return normalizedUsername;
+                //Logger.LogSuccess("The username is valid.");
             }
             else
             {
-                //Logger.LogError("Invalid characters in username: " + username);
-                return "DefaultUsername";
+                //Logger.LogError("The username is invalid.");
             }
-        }
 
-        static string NormalizeUsername(string username, System.Text.NormalizationForm normalizationForm)
-        {
-            return username.Normalize(normalizationForm);
-        }
+            // Print each character along with its Unicode code point
+            //foreach (char c in username)
+            //{
+            //    Logger.LogDebug($"Character: {c}, Unicode: {(int)c}");
+            //}
 
-        static void AppendToFile(string filePath, string content)
-        {
-            string entry = $"{DateTime.Now} - {content}" + Environment.NewLine;
-            System.IO.File.AppendAllText(filePath, entry, Encoding.UTF8);
+            // Return the original or sanitized username
+            // For example, if you want to remove invalid characters, you can modify this part accordingly
+            return username;
         }
 
         private static void ScanLog()
@@ -301,7 +293,9 @@ namespace VRC_Mod_Tool
                     if (parts.Length > 1)
                     {
                         votename = parts[1].Trim(); // Trim any leading or trailing whitespaces
-                        Logger.CrasherLog($"[ModerationManager] {votename}");
+
+                        string sanitizedUsername = SanitizeUsername(votename);
+                        Logger.LogImportantVRChat($"[ModerationManager] {votename}");
 
                         // Send Discord webhook for vote
                         Task.Run(() => SendDiscordWebhook("ModerationManager", $"{votename}", config, "16711680")).Wait();
