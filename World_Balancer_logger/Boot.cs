@@ -134,7 +134,7 @@ namespace VRC_Mod_Tool
 
                         while (!VRChat.HasExited)
                         {
-                            ReadLogAsync(target.FullName);
+                            ReadLog(target.FullName);
                             Thread.Sleep(1);
                         }
                     }
@@ -142,7 +142,7 @@ namespace VRC_Mod_Tool
             }
         }
 
-    private static void ReadLogAsync(string path)
+    private static void ReadLog(string path)
     {
         // Load configuration
         AppConfig config = ConfigManager.LoadConfig("./config.json");
