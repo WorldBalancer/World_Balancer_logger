@@ -11,10 +11,7 @@ Requirements: NET 7.0 https://dotnet.microsoft.com/en-us/download/dotnet/7.0
 
 Please take a look at our Wiki https://github.com/WorldBalancer/World_Balancer_logger/wiki
 
-
-Images look like in the Console
-![image](https://github.com/RatingGull27/World_Balancer_logger/assets/45981158/0054135f-488f-4ac1-9739-f86bec781277)
-
-Our Discord support invite: [https://discord.com/invite/mm3FT687N2](https://discord.gg/wr8FK74BxJ)
+Archive Note: We do not own this code. It has been improved by using JSON instead of a link or URL that may not work. This code was not created by us, but by Umbra 999. Therefore, we cannot claim it as our own. We do not have ownership of the code, we just made it better.
+ Some users aren't using the code provided for their Discord server invites: [https://discord.gg/wr8FK74BxJ](https://discord.gg/wr8FK74BxJ) and [https://oldapi.nekosunevr.co.uk/yd.php](https://oldapi.nekosunevr.co.uk/yd.php).
 
 copyright code on GitHub: https://github.com/Umbra999/VRC-AntiFBTHeaven
